@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+
+{% block main %}
+<h1>Todo Detail</h1>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ Todo_detail.title }}</h5>
+    <p class="card-text">{{ Todo_detail.description }}</p>
+    <p class="card-text"><strong>Limit:</strong> {{ Todo_detail.limit }}</p>
+  </div>
+  <a href="{% url 'update' pk=Todo_detail.pk %}" class="btn btn-primary btn-sm">Edit</a>
+  <a href="{% url 'delete' pk=Todo_detail.pk %}" class="btn btn-danger btn-sm">Delete</a>
+</div>
+{% endblock %}
