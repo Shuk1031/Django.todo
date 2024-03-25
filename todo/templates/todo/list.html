@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+
+{% block main %}
+<div class="welcome">
+  <h1 class="title">ようこそDjangoTodoへ</h1>
+  <p class="subtitle">今日やることをリストアップしよう！</p>
+  <a href="{% url 'create'%}" class="btn btn-primary">Todoを追加する</a>
+</div>
+{% if Todo_list %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Limit</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for todo in Todo_list %}
+    <tr>
+      <td><a href="{% url 'detail' todo.pk %}">{{todo.title }}</a></td>
+      <td>{{ todo.limit }}</td>
+      <td> 
+        <a href="{% url 'update' todo.pk %}" class="btn btn-primary btn-sm">Edit</a>
+        <a href="{% url 'delete' todo.pk %}" class="btn btn-danger btn-sm">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Todoはまだ追加されてません</p>
+{% endif %}
+{% endblock %}
